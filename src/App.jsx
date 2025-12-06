@@ -80,16 +80,24 @@ const formatRangeDate = (start, end) => {
 export default function App() {
   const [session, setSession] = useState(null);
   const [userRole, setUserRole] = useState(null);
-  const [view, setView] = useState('login');
+  const [view, setView] = useState(localStorage.getItem('mpa_last_view') || 'login');
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // --- GANTI STATE INI ---
+
+  // Cek local storage dulu, kalau tidak ada baru default ke 'login' atau 'home'
+
+
+  // Cek local storage untuk tab admin juga
+
 
   const [searchQuery, setSearchQuery] = useState('');
   const [filterCategory, setFilterCategory] = useState('Semua');
   const [currentNavDate, setCurrentNavDate] = useState(new Date('2025-12-01'));
 
-  const [adminTab, setAdminTab] = useState('agenda');
+  const [adminTab, setAdminTab] = useState(localStorage.getItem('mpa_admin_tab') || 'agenda');
   const [usersList, setUsersList] = useState([]);
   const [showAddUser, setShowAddUser] = useState(false);
   const [isCreatingUser, setIsCreatingUser] = useState(false);
@@ -103,6 +111,17 @@ export default function App() {
   });
 
   // --- INITIALIZATION ---
+  // --- TAMBAHKAN CODE INI ---
+
+  // Efek untuk menyimpan posisi terakhir ke memori browser
+  useEffect(() => {
+    // Jangan simpan jika sedang di halaman login (agar privasi terjaga)
+    if (view !== 'login') {
+      localStorage.setItem('mpa_last_view', view);
+    }
+    localStorage.setItem('mpa_admin_tab', adminTab);
+  }, [view, adminTab]);
+
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
@@ -114,15 +133,25 @@ export default function App() {
       }
     });
 
+    // --- DI DALAM useEffect AUTH ---
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
       if (session) {
         fetchUserRole(session.user.id);
-        if (view === 'login') setView('home');
+
+        // LOGIKA BARU: Hanya pindahkan ke home JIKA posisi terakhir adalah login
+        // Kalau posisi terakhir adalah 'admin', biarkan tetap di 'admin'
+        if (view === 'login') {
+          // Cek apakah ada history view yang tersimpan valid, jika tidak baru ke home
+          const lastView = localStorage.getItem('mpa_last_view');
+          setView(lastView && lastView !== 'login' ? lastView : 'home');
+        }
       } else {
         setView('login');
         setUserRole(null);
         setEvents([]);
+        localStorage.removeItem('mpa_last_view'); // Hapus history jika logout
       }
     });
 
