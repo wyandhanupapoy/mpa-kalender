@@ -429,10 +429,10 @@ export default function App() {
               <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-blue-600 to-violet-600"></div>
               <form onSubmit={handleLogin} className="space-y-5 text-left mt-4">
                 <div>
-                  <label className="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">Email Institusi</label>
+                  <label className="text-xs font-bold text-slate-500 uppercase ml-1 mb-1 block">Email MPA</label>
                   <div className="relative">
                     <Mail className="absolute left-4 top-3.5 text-slate-400" size={18} />
-                    <input name="email" type="email" required className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition font-medium" placeholder="admin@himakom.com" />
+                    <input name="email" type="email" required className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition font-medium" placeholder="Email MPA" />
                   </div>
                 </div>
                 <div>
@@ -573,7 +573,7 @@ export default function App() {
                     <label className="text-xs font-bold text-slate-500 uppercase mb-1 block ml-1">Nama Kegiatan</label>
                     <div className="relative">
                       <Tag className="absolute left-3 top-3 text-slate-400" size={18} />
-                      <input type="text" required value={formData.title} onChange={e => setFormData({ ...formData, title: e.target.value })} className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition font-medium" placeholder="Contoh: Sidang Pleno" />
+                      <input type="text" required value={formData.title} onChange={e => setFormData({ ...formData, title: e.target.value })} className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition font-medium" placeholder="Contoh: Sidang Awal Periode" />
                     </div>
                   </div>
 
