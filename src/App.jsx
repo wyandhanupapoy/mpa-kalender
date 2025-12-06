@@ -487,17 +487,22 @@ export default function App() {
                       <tr key={u.id} className="border-b border-slate-100 hover:bg-slate-50">
                         <td className="px-6 py-4 font-medium">{u.email}</td>
                         <td className="px-6 py-4"><span className="px-2 py-1 bg-slate-100 rounded text-xs font-bold uppercase">{u.role.replace('_', ' ')}</span></td>
-                        <td className="px-6 py-4 text-center">
-                          <select className="bg-white border border-slate-200 rounded text-xs p-1" value={u.role} onChange={(e) => handleUpdateRole(u.id, e.target.value)} disabled={u.email === session.user.email}>
+                        <td className="px-6 py-4 flex justify-center items-center gap-2">
+                          <select
+                            className="bg-white border border-slate-200 rounded text-xs p-1"
+                            value={u.role}  {/* Pakai u */}
+                            onChange={(e) => handleUpdateRole(u.id, e.target.value)} {/* Pakai u */}
+                            disabled={u.email === session.user.email} {/* Pakai u */}
+                          >
                             <option value="staf_muda">Staf Muda</option>
                             <option value="staf_ahli">Staf Ahli</option>
                             <option value="admin">Admin</option>
                           </select>
-                          {/* --- TOMBOL HAPUS (BARU) --- */}
-                          {/* Kondisi: Jangan tampilkan tombol hapus di baris akun sendiri */}
-                          {user.email !== session.user.email && (
+
+                          {/* TOMBOL HAPUS (PERBAIKAN VARIABEL) */}
+                          {u.email !== session.user.email && (
                             <button
-                              onClick={() => handleDeleteUser(user.id, user.email)}
+                              onClick={() => handleDeleteUser(u.id, u.email)} {/* GANTI user.id JADI u.id */}
                               className="p-1.5 text-red-500 bg-red-50 hover:bg-red-600 hover:text-white rounded-lg transition"
                               title="Hapus Akun"
                             >
