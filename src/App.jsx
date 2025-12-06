@@ -17,11 +17,11 @@ const LogoGroup = () => (
   <div className="flex items-center gap-3 cursor-pointer group select-none">
     <div className="flex -space-x-3 transition-all duration-500 group-hover:space-x-0">
       <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white border-2 border-slate-50 shadow-md flex items-center justify-center relative z-20">
-        <img src="/Logo_MPA.png" alt="POLBAN" className="w-full h-full object-contain p-1" onError={(e) => e.target.style.display = 'none'} />
+        <img src="/Logo_MPA.png" alt="MPA" className="w-full h-full object-cover" onError={(e) => e.target.style.display = 'none'} />
         <span className="text-blue-700 font-extrabold text-[10px] tracking-tighter absolute" style={{ zIndex: -1 }}>MPA</span>
       </div>
       <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-blue-700 border-2 border-white shadow-md flex items-center justify-center relative z-10">
-        <img src="/Logo_HIMAKOM.png" alt="POLBAN" className="w-full h-full object-contain p-1" onError={(e) => e.target.style.display = 'none'} />
+        <img src="/Logo_HIMAKOM.png" alt="HIM" className="w-full h-full object-cover" onError={(e) => e.target.style.display = 'none'} />
         <span className="text-white font-extrabold text-[10px] tracking-tighter absolute" style={{ zIndex: -1 }}>HIM</span>
       </div>
     </div>
