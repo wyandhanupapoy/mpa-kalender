@@ -200,6 +200,23 @@ export default function App() {
     }
   };
 
+  // --- DELETE USER HANDLER (BARU) ---
+  const handleDeleteUser = async (userId, userEmail) => {
+    if (!confirm(`Yakin ingin MENGHAPUS akun ${userEmail}? Tindakan ini tidak dapat dibatalkan.`)) return;
+
+    try {
+      // Memanggil fungsi SQL yang kita buat di Langkah 1
+      const { error } = await supabase.rpc('delete_user_by_admin', { user_id: userId });
+
+      if (error) throw error;
+
+      alert("Pengguna berhasil dihapus.");
+      fetchUsers(); // Refresh tabel agar data hilang dari layar
+    } catch (err) {
+      alert("Gagal menghapus: " + err.message);
+    }
+  };
+
   const handleUpdateRole = async (userId, newRole) => {
     const { error } = await supabase.from('profiles').update({ role: newRole }).eq('id', userId);
     if (error) alert("Gagal: " + error.message);
@@ -454,6 +471,18 @@ export default function App() {
                         <option value="staf_ahli">Staf Ahli</option>
                         <option value="admin">Admin</option>
                       </select>
+
+                      {/* --- TOMBOL HAPUS (BARU) --- */}
+                      {/* Kondisi: Jangan tampilkan tombol hapus di baris akun sendiri */}
+                      {user.email !== session.user.email && (
+                        <button
+                          onClick={() => handleDeleteUser(user.id, user.email)}
+                          className="p-1.5 text-red-500 bg-red-50 hover:bg-red-600 hover:text-white rounded-lg transition"
+                          title="Hapus Akun"
+                        >
+                          <Trash2 size={14} />
+                        </button>
+                      )}
                     </div>
                     <div className="flex items-end">
                       <button type="submit" disabled={isCreatingUser} className="w-full py-2 bg-slate-900 text-white rounded-lg font-bold shadow-md hover:bg-black transition">{isCreatingUser ? 'Menyimpan...' : 'Simpan Akun'}</button>
