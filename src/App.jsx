@@ -55,6 +55,7 @@ const StatusBadge = ({ date, endDate }) => {
 
 const getCategoryColor = (cat) => {
   const colors = {
+    'Ketua/Wakil': { bg: 'bg-yellow-50', text: 'text-yellow-800', border: 'bg-yellow-500', icon: 'text-yellow-500' },
     'Pengawasan': { bg: 'bg-orange-50', text: 'text-orange-800', border: 'bg-orange-500', icon: 'text-orange-500' },
     'Legislasi': { bg: 'bg-blue-50', text: 'text-blue-800', border: 'bg-blue-500', icon: 'text-blue-500' },
     'Aspirasi': { bg: 'bg-emerald-50', text: 'text-emerald-800', border: 'bg-emerald-500', icon: 'text-emerald-500' },
@@ -373,7 +374,7 @@ export default function App() {
                     <input type="text" placeholder="Cari kegiatan..." className="flex-1 bg-transparent outline-none text-sm text-slate-700 font-medium" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                     <div className="h-5 w-px bg-slate-300 mx-3"></div>
                     <select className="bg-transparent text-slate-600 text-xs font-bold uppercase tracking-wide outline-none cursor-pointer hover:text-blue-600" value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)}>
-                      {['Semua', 'Legislasi', 'Pengawasan', 'Aspirasi', 'Kominfo', 'Lainnya'].map(c => <option key={c} value={c}>{c}</option>)}
+                      {['Semua', 'Ketua/Wakil', 'Legislasi', 'Pengawasan', 'Aspirasi', 'Kominfo', 'Lainnya'].map(c => <option key={c} value={c}>{c}</option>)}
                     </select>
                   </div>
                 </div>
@@ -399,7 +400,7 @@ export default function App() {
                 <div className="bg-slate-50 p-3 rounded-xl border border-slate-200">
                   <input type="text" placeholder="Cari kegiatan..." className="w-full bg-transparent outline-none text-sm p-2 border-b border-slate-200 mb-2" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                   <select className="w-full bg-transparent text-sm font-bold text-slate-600 p-2 outline-none" value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)}>
-                    {['Semua', 'Legislasi', 'Pengawasan', 'Aspirasi', 'Kominfo', 'Lainnya'].map(c => <option key={c} value={c}>{c}</option>)}
+                    {['Semua', 'Ketua/Wakil', 'Legislasi', 'Pengawasan', 'Aspirasi', 'Kominfo', 'Lainnya'].map(c => <option key={c} value={c}>{c}</option>)}
                   </select>
                 </div>
               )}
@@ -606,7 +607,7 @@ export default function App() {
 
                   <div>
                     <label className="text-xs font-bold text-slate-500 uppercase mb-1 block ml-1">Kategori</label>
-                    <div className="relative"><Tag className="absolute left-3 top-2.5 text-slate-400" size={18} /><select value={formData.category} onChange={e => setFormData({ ...formData, category: e.target.value })} className="w-full pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-xl outline-none cursor-pointer appearance-none">{['Legislasi', 'Pengawasan', 'Aspirasi', 'Kominfo', 'Lainnya'].map(c => <option key={c} value={c}>{c}</option>)}</select></div>
+                    <div className="relative"><Tag className="absolute left-3 top-2.5 text-slate-400" size={18} /><select value={formData.category} onChange={e => setFormData({ ...formData, category: e.target.value })} className="w-full pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-xl outline-none cursor-pointer appearance-none">{['Ketua/Wakil', 'Legislasi', 'Pengawasan', 'Aspirasi', 'Kominfo', 'Lainnya'].map(c => <option key={c} value={c}>{c}</option>)}</select></div>
                   </div>
                   <div>
                     <label className="text-xs font-bold text-slate-500 uppercase mb-1 block ml-1">Lokasi</label>
@@ -724,7 +725,7 @@ export default function App() {
                 })()}
               </div>
               <div className="flex flex-wrap gap-6 justify-center mt-8 pt-6 border-t border-slate-50">
-                {[{ label: 'Legislasi', color: 'bg-blue-500' }, { label: 'Pengawasan', color: 'bg-orange-500' }, { label: 'Aspirasi', color: 'bg-emerald-500' }, { label: 'Kominfo', color: 'bg-violet-500' }].map((l, i) => (<div key={i} className="flex items-center gap-2 text-xs font-bold text-slate-600"><span className={`w-2.5 h-2.5 rounded-full ${l.color} shadow-sm`}></span> {l.label}</div>))}
+                {[{ label: 'Ketua/Wakil', color: 'bg-yellow-500' }, { label: 'Pengawasan', color: 'bg-orange-500' }, { label: 'Legislasi', color: 'bg-blue-500' }, { label: 'Pengawasan', color: 'bg-orange-500' }, { label: 'Aspirasi', color: 'bg-emerald-500' }, { label: 'Kominfo', color: 'bg-violet-500' }].map((l, i) => (<div key={i} className="flex items-center gap-2 text-xs font-bold text-slate-600"><span className={`w-2.5 h-2.5 rounded-full ${l.color} shadow-sm`}></span> {l.label}</div>))}
               </div>
             </div>
 
