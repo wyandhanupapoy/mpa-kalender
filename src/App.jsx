@@ -33,6 +33,14 @@ const LogoGroup = () => (
         Politeknik Negeri Bandung
       </span>
     </div>
+    {/* 3. TAMBAHAN BARU: LOGO POLBAN DI KANAN */}
+    {/* Garis Pemisah Tipis */}
+    <div className="h-8 w-px bg-slate-200 mx-1 hidden md:block"></div>
+
+    {/* Logo Polban */}
+    <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white border-2 border-slate-50 shadow-sm flex items-center justify-center overflow-hidden transition-transform group-hover:scale-105">
+      <img src="/logo-polban.png" alt="POLBAN" className="w-full h-full object-contain p-1" onError={(e) => e.target.style.display = 'none'} />
+    </div>
   </div>
 );
 
