@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Kalender MPA</string>
+    <string name="title_activity_main">Kalender MPA</string>
+    <string name="package_name">com.mpa.himakom.kalender</string>
+    <string name="custom_url_scheme">com.mpa.himakom.kalender</string>
+</resources>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <!-- Resource Hints for Performance -->
+    <link rel="preconnect" href="https://tjijmdguldpieefzdvne.supabase.co" crossorigin />
+    <link rel="dns-prefetch" href="https://tjijmdguldpieefzdvne.supabase.co" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/Logo_MPA.png" />
+    
+    <!-- Mobile Optimization -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover, interactive-widget=resizes-visual" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Theme Colors -->
+    <meta name="theme-color" content="#1e40af" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1e40af" media="(prefers-color-scheme: dark)" />
+    <meta name="msapplication-TileColor" content="#1e40af" />
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png" />
+    
+    <!-- SEO & Open Graph -->
+    <meta name="description" content="Aplikasi Timeline Organisasi MPA HIMAKOM Politeknik Negeri Bandung" />
+    <meta name="keywords" content="MPA, HIMAKOM, POLBAN, Kalender, Agenda, Organisasi" />
+    <meta name="author" content="wyandhanu" />
+    <meta property="og:title" content="Kalender MPA" />
+    <meta property="og:description" content="Aplikasi Timeline Organisasi MPA HIMAKOM Politeknik Negeri Bandung" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Performance Hints -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <title>Kalender MPA</title>
+    
+    <style>
+      /* CSS untuk mencegah scrolling di halaman login dan menjaga footer tetap fixed */
+      body {
+        overscroll-behavior: none; /* Mencegah pull-to-refresh di Chrome Android */
+      }
+      
+      /* Target halaman login secara spesifik jika memungkinkan lewat struktur DOM,
+         atau pastikan layout login menggunakan class tertentu.
+         Diasumsikan elemen root atau wrapper login akan memenuhi layar.
+      */
+      
+      /* Utility class tambahan yang bisa digunakan oleh React */
+      .no-scroll-login {
+        overflow: hidden;
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+      }
+      
+      .fixed-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+      }
+    </style>
+    
+    <script type="module" crossorigin src="/assets/index-RVlilYFn.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-react-C1wZbKwU.js">
+    <link rel="modulepreload" crossorigin href="/assets/vendor-ui-DJjMc_01.js">
+    <link rel="modulepreload" crossorigin href="/assets/vendor-supabase-DFvWL1c3.js">
+    <link rel="modulepreload" crossorigin href="/assets/vendor-capacitor-_TLxn1yT.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-ilz_LIsv.css">
+  <link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+  <body>
+    <div id="root"></div>
+
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js')
+            .then((registration) => {
+              console.log('✅ Service Worker registered:', registration.scope);
+            })
+            .catch((error) => {
+              console.error('❌ Service Worker registration failed:', error);
+            });
+        });
+      }
+      
+      // PWA Install Prompt
+      let deferredPrompt;
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        // Bisa ditampilkan custom install button nanti
+        console.log('💡 PWA Install prompt available');
+      });
+    </script>
+  </body>
+</html>

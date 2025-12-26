@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "976181155248",
+    "project_id": "kalender-mpa-himakom",
+    "storage_bucket": "kalender-mpa-himakom.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976181155248:android:9a8311a961b2a9f96c3275",
+        "android_client_info": {
+          "package_name": "com.mpa.himakom.kalender"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdGo3l3mfjAqHOPtsw5nH_pVW3-eprl40"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
